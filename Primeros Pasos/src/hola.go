@@ -8,6 +8,26 @@ import (
 // Una forma más simplificada de declarar variables
 var nombre, apellido, edad = "Diego", "Arroyo", 21
 
+// Declaración de Constantes
+const Pi = 3.14
+
+const (
+	x = 100
+	y = 0b1010	// Binario
+	z = 0o12	// Octal
+	w = 0xFF	// Hexadecimal
+)
+
+const (
+	Domingo = iota + 1	// Va aumentando el valor para las siguientes constantes
+	Lunes
+	Martes
+	Miercoles
+	Jueves
+	Viernes
+	Sabado 
+)
+
 func main(){
 	fmt.Println("Hola Mundo")
 	fmt.Println(quote.Hello())
@@ -39,4 +59,7 @@ func main(){
 	fmt.Println(firstName, lastName, age)
 	fmt.Println(nombre, apellido, edad)
 	fmt.Println(lenguaje, tiempo, computadora)
+	fmt.Println(Pi)
+	fmt.Println(x, y, z, w)
+	fmt.Println(Viernes)
 }
