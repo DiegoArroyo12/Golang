@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"strconv"
+
 	"rsc.io/quote"
 )
 
@@ -73,4 +75,23 @@ func main(){
 	fmt.Println(Pi)
 	fmt.Println(x, y, z, w)
 	fmt.Println(Viernes)
+
+	// Conversiones de tipos
+	var integer16 int16 = 50
+	var integer32 int32 = 100
+
+	// De integer32 a integer16
+	fmt.Println(integer16 + int16(integer32))
+
+	s := "100"
+	i, _ := strconv.Atoi(s) // El guión bajo es para controlar el error
+
+	// De string a int
+	fmt.Println(i + i)
+
+	n := 42
+	s = strconv.Itoa(n)
+
+	// De int a string
+	fmt.Println(s + s)
 }
