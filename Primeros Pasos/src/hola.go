@@ -56,6 +56,17 @@ func main(){
 	age = 21
 	*/
 
+	// Valores Predeterminados
+	var (
+		defaultInt int
+		defautlUint uint
+		defaultFloat float32
+		defaultBool bool
+		defaultString string
+	)
+
+	fmt.Println(defaultInt, defautlUint, defaultFloat, defaultBool, defaultString) // 0 0 0 false '' (sin comillas, cadena vacía)
+
 	fmt.Println(firstName, lastName, age)
 	fmt.Println(nombre, apellido, edad)
 	fmt.Println(lenguaje, tiempo, computadora)
