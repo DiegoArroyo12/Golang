@@ -94,4 +94,27 @@ func main(){
 
 	// De int a string
 	fmt.Println(s + s)
+
+	// Printf
+	name := "Diego"
+	ages := 21
+
+	fmt.Printf("Hola, me llamo %s y tengo %d años.\n", name, ages)
+
+	greeting := fmt.Sprintf("Hola, me llamo %s y tengo %d años.\n", name, ages)
+	fmt.Println(greeting)
+
+	// Ingresar usuarios en terminal
+	var nombreUsuario string
+	var apellidoUsuario string
+	var edadUsuario int
+
+	fmt.Print("Ingrese su nombre: ")
+	fmt.Scanln(&nombreUsuario, &apellidoUsuario)
+	fmt.Print("Ingrese su edad: ")
+	fmt.Scanln(&edadUsuario)
+
+	 // %v cuando no sabemos que tipo de dato se va a mostrar
+	 // %T es para saber el tipo de dato con printf
+	fmt.Printf("Hola, me llamo %s %s y tengo %d años.\n", nombreUsuario, apellidoUsuario, edadUsuario)
 }
