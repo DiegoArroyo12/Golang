@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"math"
 	"strconv"
 
 	"rsc.io/quote"
@@ -117,4 +118,15 @@ func main(){
 	 // %v cuando no sabemos que tipo de dato se va a mostrar
 	 // %T es para saber el tipo de dato con printf
 	fmt.Printf("Hola, me llamo %s %s y tengo %d años.\n", nombreUsuario, apellidoUsuario, edadUsuario)
+
+	// Librería math
+	fmt.Println(math.E) // número de euler
+	fmt.Println(math.Pow(2,3)) // elevar 2 a la 3
+
+	a := 10
+	b := 25
+
+	a += 10
+
+	fmt.Println(a + b)
 }
