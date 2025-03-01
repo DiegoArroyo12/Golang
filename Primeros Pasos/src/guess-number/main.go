@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"runtime"
 	"time"
 )
 
@@ -24,5 +25,27 @@ func main(){
 		fmt.Println("¡Tarde!")
 	} else {
 		fmt.Println("¡Noche!")
+	}
+
+	// Switch
+	switch os := runtime.GOOS; os {
+	case "windows":
+		fmt.Println("Se esta ejecutando en Windows")
+	case "linux":
+		fmt.Println("Se esta ejecutando en Linux")
+	case "darwin":
+		fmt.Println("Se esta ejecutando en MacOS")
+	default:
+		fmt.Println("Se ejecuta en otro Sistema Operativo")
+	}
+
+	// Ejercicio del tiempo con switch
+	switch t := time.Now(); {
+		case t.Hour() < 12:
+			fmt.Println("¡Mañana!")
+		case t.Hour() < 17:
+			fmt.Println("¡Tarde!")
+		default:
+			fmt.Println("¡Noche!")
 	}
 }
