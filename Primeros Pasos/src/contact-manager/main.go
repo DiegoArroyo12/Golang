@@ -3,6 +3,7 @@ package main
 import (
 	"errors"
 	"fmt"
+	"os"
 	"strconv"
 )
 
@@ -16,6 +17,26 @@ func divide(dividendo, divisor int) (int, error) {
 }
 
 func main() {
+	// Uso de defer
+	file, err := os.Create("hola.txt")
+
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	// Con defer posponemos la ejecución de la instrucción
+	// esta se ejecutará al final de esta función 'useDefer'
+	defer file.Close()
+
+	_, err = file.Write([]byte("Hola, Diego Arroyo"))
+
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	// Manejo de Errores
 	str := "123"
 	num, err := strconv.Atoi(str)
 
