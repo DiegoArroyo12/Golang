@@ -10,7 +10,7 @@ import (
 func Hello(name string) (string, error) {
 
 	if name == "" {
-		return "", errors.New("Nombre vacío")
+		return name, errors.New("Nombre vacío")
 	}
 
 	// Devuelve un saludo que incluye el nombre en un mensaje
