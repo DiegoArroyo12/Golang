@@ -2,6 +2,14 @@ package book
 
 import "fmt"
 
+type Printable interface {
+	PrintInfo()
+}
+
+func Print(p Printable) {
+	p.PrintInfo()
+}
+
 type Book struct {
 	// En minúsculas se hacen atributos privados
 	title string
