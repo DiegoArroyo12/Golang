@@ -1,16 +1,20 @@
 package main
 
-import "library/book"
+import (
+	"fmt"
+	"library/book"
+)
 
 func main() {
-	var myBook = book.Book{
+	/* var myBook = book.Book{
 		Title: "Conde de Montecristo",
 		Author: "Alejandro Dumas",
 		Pages: 1020,
-	}
+	} */
 
-	secondBook := book.NewBook("La Mano del Muerto", "Alejandro Dumas", 1023)
-
+	myBook := book.NewBook("La Mano del Muerto", "Alejandro Dumas", 1023)
 	myBook.PrintInfo()
-	secondBook.PrintInfo()
+
+	myBook.SetTitle("Conde de Montecristo")
+	fmt.Println(myBook.GetTitle())
 }
