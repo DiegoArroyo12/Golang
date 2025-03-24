@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"library/animal"
 	"library/book"
 )
 
@@ -23,4 +24,22 @@ func main() {
 
 	book.Print(myBook)
 	book.Print(myTextBook)
+
+	// Objetos de Animal
+	miPerro := animal.Perro{Nombre: "Rocko"}
+	miGato := animal.Gato{Nombre: "Chichara"}
+
+	animal.HacerSonido(&miPerro)
+	animal.HacerSonido(&miGato)
+
+	animales := []animal.Animal {
+		&animal.Perro{Nombre: "Max"},
+		&animal.Gato{Nombre: "Tom"},
+		&animal.Perro{Nombre: "Buddy"},
+		&animal.Gato{Nombre: "Luna"},
+	}
+
+	for _, animal := range animales {
+		animal.Sonido()
+	}
 }
