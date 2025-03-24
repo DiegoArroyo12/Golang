@@ -17,4 +17,7 @@ func main() {
 
 	myBook.SetTitle("Conde de Montecristo")
 	fmt.Println(myBook.GetTitle())
+
+	myTextBook := book.NewTexBook("Programación", "Jaime Gamarra", 261, "Santillana SAC", "Secundaria")
+	myTextBook.PrintInfo()
 }
