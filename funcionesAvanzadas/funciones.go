@@ -45,14 +45,25 @@ func aplicar(f func(int) int, n int) int {
 	return f(n)
 }
 
+// Funciones de Orden Superior
+func doble(f func(int) int, x int) int {
+	return f(x * 2)
+}
+
+func addOne(x int) int {
+	return x + 1
+}
+
 func main() {
 	fmt.Println("Función Variádica")
 	fmt.Println(suma("Diego", 12, 45, 78, 56))
 	fmt.Println(suma("Alberto", 10, 20, 30, 40, 50))
 	imprimirDatos("Hola", 28, true, 3.14)
+
 	fmt.Println("Función Recursiva")
 	fmt.Println(factorial(5))
 	// Función Anónima: Función sin nombre
+	fmt.Println("Función Anónima")
 	func (){
 		fmt.Println("Hola soy una función anónima")
 	}()
@@ -67,4 +78,8 @@ func main() {
 	r1 := aplicar(duplicar, 5)
 	r2 := aplicar(triplicar, 5)
 	fmt.Println(r1, r2)
+
+	fmt.Println("Función de Orden Superior")
+	r := doble(addOne, 3)
+	fmt.Println("Resultado: ", r)
 }
