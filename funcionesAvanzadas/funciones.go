@@ -20,9 +20,19 @@ func imprimirDatos(datos ...interface{}){
 	}
 }
 
+// Función Recursiva: Se ejecuta a sí misma
+func factorial(n int) int {
+	if n == 0 {
+		return 1
+	}
+	return n * factorial(n - 1)
+}
+
 func main() {
 	fmt.Println("Función Variádica")
 	fmt.Println(suma("Diego", 12, 45, 78, 56))
 	fmt.Println(suma("Alberto", 10, 20, 30, 40, 50))
 	imprimirDatos("Hola", 28, true, 3.14)
+	fmt.Println("Función Recursiva")
+	fmt.Println(factorial(5))
 }
