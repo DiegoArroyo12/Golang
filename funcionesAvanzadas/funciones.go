@@ -54,6 +54,15 @@ func addOne(x int) int {
 	return x + 1
 }
 
+// Clousures: Esta hace que la función anónima recuerde el valor de i en este ejemplo
+func incrementer() func() int {
+	i := 0
+	return func() int {
+		i++
+		return i
+	}
+}
+
 func main() {
 	fmt.Println("Función Variádica")
 	fmt.Println(suma("Diego", 12, 45, 78, 56))
@@ -82,4 +91,10 @@ func main() {
 	fmt.Println("Función de Orden Superior")
 	r := doble(addOne, 3)
 	fmt.Println("Resultado: ", r)
+
+	fmt.Println("Closures")
+	nextInt := incrementer()
+	fmt.Println(nextInt())
+	fmt.Println(nextInt())
+	fmt.Println(nextInt())
 }
