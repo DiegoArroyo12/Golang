@@ -28,8 +28,10 @@ func loadPage(title string) (*Page, error) {
 	return &Page{Title: title, Body: body}, nil
 }
 
-func handler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "¡Hola! Me encantan los %s", r.URL.Path[1:]) // Capturar después de la '/'
+func viewHandler(w http.ResponseWriter, r *http.Request) {
+	title := r.URL.Path[len("/view/"):]
+	p, _ := loadPage(title)
+	fmt.Fprintf(w, "<h1>%s</h1> <div>%s</div>", p.Title, p.Body) // Capturar después de la '/'
 }
 
 func main() {
@@ -40,7 +42,7 @@ func main() {
 	//fmt.Println(p2.Body) // En bytes
 	//fmt.Println(string(p2.Body)) // En string
 
-	http.HandleFunc("/", handler)
+	http.HandleFunc("/view/", viewHandler)
 
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
