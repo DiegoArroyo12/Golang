@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	"html/template"
 	"log"
 	"net/http"
 	"os"
@@ -31,7 +31,17 @@ func loadPage(title string) (*Page, error) {
 func viewHandler(w http.ResponseWriter, r *http.Request) {
 	title := r.URL.Path[len("/view/"):]
 	p, _ := loadPage(title)
-	fmt.Fprintf(w, "<h1>%s</h1> <div>%s</div>", p.Title, p.Body) // Capturar después de la '/'
+	//fmt.Fprintf(w, "<h1>%s</h1> <div>%s</div>", p.Title, p.Body) // Capturar después de la '/'
+	t, _ := template.ParseFiles("view.html")
+	t.Execute(w, p)
+}
+
+func editHandler(w http.ResponseWriter, r *http.Request) {
+	title := r.URL.Path[len("/edit/"):]
+	p, _ := loadPage(title)
+
+	t, _ := template.ParseFiles("edit.html")
+	t.Execute(w, p)
 }
 
 func main() {
@@ -43,6 +53,7 @@ func main() {
 	//fmt.Println(string(p2.Body)) // En string
 
 	http.HandleFunc("/view/", viewHandler)
+	http.HandleFunc("/edit/", editHandler)
 
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
