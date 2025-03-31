@@ -1,1 +1,1 @@
-Esta es una página de muestra con Go
+Esta es una página de muestra con Golang
