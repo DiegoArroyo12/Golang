@@ -3,6 +3,7 @@ package main
 import (
 	"go-mysql/database"
 	"go-mysql/handlers"
+	"go-mysql/models"
 	"log"
 
 	_ "github.com/go-sql-driver/mysql"
@@ -17,7 +18,17 @@ func main() {
 
 	defer db.Close()
 
+	// Crear una instancia de Contact
+	newContact := models.Contact{
+		Name: "Nuevo Usuario",
+		Email: "nuevo@example.com",
+		Phone: "123456789",
+	}
+
 	handlers.ListContacts(db)
 
 	handlers.GetContactByID(db, 2)
+
+	handlers.CreateContact(db, newContact)
+	handlers.ListContacts(db)
 }
