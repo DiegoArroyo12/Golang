@@ -47,3 +47,36 @@ func ListContacts(db *sql.DB) {
 		fmt.Println("---------------------------------------------------------------------------------------------------")
 	}
 }
+
+// GetContactByID obtiene un contacto de la base de datos mediante su ID
+func GetContactByID(db *sql.DB, contactID int) {
+	// Consulta SQL para seleccionar un contacto por su ID
+	query := "SELECT * FROM contact WHERE id = ?"
+
+	row := db.QueryRow(query, contactID)
+
+	// Instancia de modelo contact
+	contact := models.Contact{}
+	var valueEmail sql.NullString // Manejar valo null
+
+	// Escanear el resultado en el modelo contact
+	err := row.Scan(&contact.Id, &contact.Name, &valueEmail, &contact.Phone)
+	if err != nil {
+		if err == sql.ErrNoRows {
+			log.Fatalf("No se encontró ningún contacto con el ID %d", contactID)
+		}
+	}
+
+	// Control de nulos
+	if valueEmail.Valid {
+		contact.Email = valueEmail.String
+	} else {
+		contact.Email = "Sin Correo Electrónico"
+	}
+
+	fmt.Println("\nDatos del Contacto")
+	fmt.Println("---------------------------------------------------------------------------------------------------")
+	fmt.Printf("ID: %d, Nombre: %s, Email: %s, Teléfono: %s\n",
+				contact.Id, contact.Name, contact.Email, contact.Phone)
+	fmt.Println("---------------------------------------------------------------------------------------------------")
+}

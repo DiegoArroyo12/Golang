@@ -18,4 +18,6 @@ func main() {
 	defer db.Close()
 
 	handlers.ListContacts(db)
+
+	handlers.GetContactByID(db, 2)
 }
