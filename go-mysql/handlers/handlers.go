@@ -108,3 +108,17 @@ func UpdateContact(db *sql.DB, contact models.Contact) {
 
 	log.Println("Contacto Actualizado con Éxito")
 }
+
+// DeleteContact elimina un contacto de la base de datos
+func DeleteContact(db *sql.DB, contactID int) {
+	// Sentencia SQL para eliminar un contacto por su ID
+	query := "DELETE FROM contact WHERE id = ?"
+
+	// Ejecutar la sentencia SQL
+	_, err := db.Exec(query, contactID)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	log.Println("Contacto Eliminado con Éxito")
+}

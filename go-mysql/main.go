@@ -34,6 +34,11 @@ func main() {
 	/* handlers.CreateContact(db, newContact)
 	handlers.ListContacts(db) */
 
+	// Editar Registro
 	handlers.UpdateContact(db, newContact)
+	handlers.ListContacts(db)
+
+	// Eliminar Registro
+	handlers.DeleteContact(db, 4)
 	handlers.ListContacts(db)
 }
