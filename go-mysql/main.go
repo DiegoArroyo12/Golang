@@ -20,15 +20,20 @@ func main() {
 
 	// Crear una instancia de Contact
 	newContact := models.Contact{
-		Name: "Nuevo Usuario",
-		Email: "nuevo@example.com",
-		Phone: "123456789",
+		Id: 4,
+		Name: "Modificado",
+		Email: "modificado@example.com",
+		Phone: "987654321",
 	}
 
 	handlers.ListContacts(db)
 
 	handlers.GetContactByID(db, 2)
 
-	handlers.CreateContact(db, newContact)
+	// Crear Nuevo Registro
+	/* handlers.CreateContact(db, newContact)
+	handlers.ListContacts(db) */
+
+	handlers.UpdateContact(db, newContact)
 	handlers.ListContacts(db)
 }
