@@ -13,7 +13,15 @@ func Index(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	err = tpl.Execute(w, nil)
+	data := struct {
+		Title	string
+		Message	string
+	} {
+		Title: "Página de Inicio",
+		Message: "¡Bienvenido a Piedra, Papel o Tijera!",
+	}
+
+	err = tpl.Execute(w, data)
 
 	if err != nil {
 		http.Error(w, "Error al renderizar la plantilla", http.StatusInternalServerError)
