@@ -7,21 +7,13 @@ import (
 )
 
 func Index(w http.ResponseWriter, r *http.Request) {
-	tpl, err := template.ParseFiles("templates/index.html")
+	tpl, err := template.ParseFiles("templates/base.html","templates/index.html")
 	if err != nil {
 		http.Error(w, "Error al analizar plantillas", http.StatusInternalServerError)
 		return
 	}
 
-	data := struct {
-		Title	string
-		Message	string
-	} {
-		Title: "Página de Inicio",
-		Message: "¡Bienvenido a Piedra, Papel o Tijera!",
-	}
-
-	err = tpl.Execute(w, data)
+	err = tpl.ExecuteTemplate(w, "base", nil)
 
 	if err != nil {
 		http.Error(w, "Error al renderizar la plantilla", http.StatusInternalServerError)
