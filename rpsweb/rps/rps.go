@@ -61,7 +61,7 @@ func PlayRound(playerValue int) Round {
 		computerChoice = "La computadora eligió PAPEL"
 	case SCISSORS:
 		computerChoiceInt = SCISSORS
-		computerChoice = "La computadora eligión TIJERAS"
+		computerChoice = "La computadora eligió TIJERAS"
 	}
 
 	// Generar un número aleatorio de 0-2, que usamos para elegir un mensaje aleatorio
