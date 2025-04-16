@@ -8,7 +8,7 @@ import (
 )
 
 // username:password@tcp(localhost:3306)/database
-const url = "username:password@tcp(localhost:3306)/database"
+const url = "root:rootmac24@tcp(127.0.0.1:3306)/goweb_db"
 
 // Guarda la conexión
 var db *sql.DB
@@ -33,4 +33,9 @@ func Ping() {
 	if err := db.Ping(); err != nil {
 		panic(err)
 	}
+}
+
+// Crea una tabla
+func CreateTable(schema string) {
+	db.Exec(schema)
 }

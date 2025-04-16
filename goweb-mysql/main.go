@@ -1,9 +1,14 @@
 package main
 
-import "gowebsql/db"
+import (
+	"gowebsql/db"
+	"gowebsql/models"
+)
 
 func main() {
 	db.Connect()
-	db.Ping()
+	
+	db.CreateTable(models.UserSchema)
+
 	db.Close()
 }
