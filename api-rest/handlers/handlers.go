@@ -79,5 +79,17 @@ func UpdateUser(rw http.ResponseWriter, r *http.Request) {
 }
 
 func DeletUser(rw http.ResponseWriter, r *http.Request) {
-	fmt.Fprintln(rw, "Elimina un usuario")
+	rw.Header().Set("Content-Type", "application/json")
+
+	// Obtener id
+	vars := mux.Vars(r)
+	userId, _ := strconv.Atoi(vars["id"])
+
+	db.Connect()
+	user := models.GetUser(userId)
+	user.Delete()
+	db.Close()
+	
+	output, _ := json.Marshal(user)
+	fmt.Fprintln(rw, string(output))
 }
