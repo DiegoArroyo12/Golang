@@ -18,6 +18,11 @@ func main() {
 
 	user := models.GetUser(2)
 	fmt.Println(user)
+	user.Username = "Arroyo"
+	user.Password = "A123"
+	user.Email = "a12@gmail.com"
+	user.Save()
+	fmt.Println(models.ListUser())
 
 	//db.TruncateTable("users")
 	db.Close()
