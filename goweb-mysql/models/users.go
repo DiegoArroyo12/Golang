@@ -1,5 +1,7 @@
 package models
 
+import "gowebsql/db"
+
 type User struct {
 	Id int
 	Username string
@@ -13,3 +15,22 @@ const UserSchema string = `CREATE TABLE IF NOT EXISTS users (
 	password VARCHAR(100) NOT NULL,
 	email VARCHAR(50),
 	create_data TIMESTAMP DEFAULT CURRENT_TIMESTAMP)`
+
+// Construir usuario
+func NewUser(username, password, email string) *User {
+	user := &User{Username: username, Password: password, Email: email}
+	return user
+}
+
+// Crear usuario e Insertar a BD
+func CreateUser(username, password, email string) *User {
+	user := NewUser(username, password, email)
+	user.insert()
+	return user
+}
+
+// Insertar Registro
+func (user *User) insert() {
+	sql := "INSERT INTO users SET username=?, password=?, email=?"
+	db.Exec(sql, user.Username, user.Password, user.Email)
+}
