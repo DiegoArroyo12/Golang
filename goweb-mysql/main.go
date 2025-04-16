@@ -16,6 +16,9 @@ func main() {
 	users := models.ListUser()
 	fmt.Println(users)
 
+	user := models.GetUser(2)
+	fmt.Println(user)
+
 	//db.TruncateTable("users")
 	db.Close()
 }
