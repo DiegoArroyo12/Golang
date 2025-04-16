@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"gowebsql/db"
 	"gowebsql/models"
 )
@@ -8,7 +9,8 @@ import (
 func main() {
 	db.Connect()
 	
-	db.CreateTable(models.UserSchema)
+	fmt.Println(db.ExistsTable("users"))
+	db.CreateTable(models.UserSchema, "users")
 
 	db.Close()
 }
