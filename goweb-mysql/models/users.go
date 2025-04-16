@@ -27,7 +27,7 @@ func NewUser(username, password, email string) *User {
 // Crear usuario e Insertar a BD
 func CreateUser(username, password, email string) *User {
 	user := NewUser(username, password, email)
-	user.insert()
+	user.Save()
 	return user
 }
 
@@ -80,4 +80,10 @@ func (user *User) Save() {
 	} else {
 		user.update()
 	}
+}
+
+// Eliminar Registro
+func (user *User) Delete() {
+	sql := "DELETE FROM users WHERE id=?"
+	db.Exec(sql, user.Id)
 }
