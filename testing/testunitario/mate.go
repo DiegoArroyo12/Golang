@@ -11,6 +11,7 @@ func GetMax(a, b int) int {
 
 	return b
 }
+
 /* 
 go test -cover (Porcentaje testeado)
 PASS
@@ -32,3 +33,11 @@ total:                                                          (statements)    
 
 go tool cover -html=coverage.out (Abre en el navegador una forma más visual de ver lo testeado)
 */
+
+func Fibonacci(n int) int {
+	if n <= 1 {
+		return n
+	}
+
+	return Fibonacci(n - 1) + Fibonacci(n - 2)
+}
