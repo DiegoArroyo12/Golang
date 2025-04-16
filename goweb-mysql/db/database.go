@@ -10,8 +10,10 @@ import (
 // username:password@tcp(localhost:3306)/database
 const url = "username:password@tcp(localhost:3306)/database"
 
+// Guarda la conexión
 var db *sql.DB
 
+// Realiza la conexión
 func Connect() {
 	conection, err := sql.Open("mysql", url)
 	if err != nil {
@@ -21,6 +23,14 @@ func Connect() {
 	db = conection
 }
 
+// Cierra la conexión
 func Close() {
 	db.Close()
+}
+
+// Verificar la conexión
+func Ping() {
+	if err := db.Ping(); err != nil {
+		panic(err)
+	}
 }

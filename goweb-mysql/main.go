@@ -4,5 +4,6 @@ import "gowebsql/db"
 
 func main() {
 	db.Connect()
+	db.Ping()
 	db.Close()
 }
