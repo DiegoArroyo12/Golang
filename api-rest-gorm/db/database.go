@@ -9,7 +9,7 @@ import (
 	"gorm.io/gorm"
 )
 
-var dsn = "root:rootmac24@tcp(localhost:3306)/goweb_db?charset=utf8mb4&parseTime=True&loc=local"
+var dsn = "root:rootmac24@tcp(localhost:3306)/goweb_db?charset=utf8mb4&parseTime=True&loc=America%2FMexico_City"
 var Database = func () (db *gorm.DB) {
 	if db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{}); err != nil {
 		fmt.Println("Error en la conexión", err)

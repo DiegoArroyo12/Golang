@@ -1,15 +1,13 @@
 package main
 
 import (
-	"gorm/handlers"
-	"log"
-	"net/http"
-
-	"github.com/gorilla/mux"
+	"gorm/models"
 )
 
 func main() {
-	// Rutas
+	models.MigrarUser()
+
+	/* // Rutas
 	mux := mux.NewRouter()
 
 	// EndPoint
@@ -19,5 +17,5 @@ func main() {
 	mux.HandleFunc("/api/user/{id:[0-9]+}", handlers.UpdateUser).Methods("PUT")
 	mux.HandleFunc("/api/user/{id:[0-9]+}", handlers.DeletUser).Methods("DELETE")
 
-	log.Fatal(http.ListenAndServe(":3000", mux))
+	log.Fatal(http.ListenAndServe(":3000", mux)) */
 }
