@@ -4,23 +4,35 @@ import (
 	"gorm/db"
 	"gorm/models"
 	"net/http"
+	"strconv"
+
+	"github.com/gorilla/mux"
 )
 
 func GetUsers(rw http.ResponseWriter, r *http.Request) {
-	users := models.Users{}
+	users := getUserById(r)
 
 	db.Database.Find(&users)
 	sendData(rw, users, http.StatusOK)
 }
 
-/* func GetUser(rw http.ResponseWriter, r *http.Request) {
-	if user, err := getUserByRequest(r); err != nil {
-		models.SendNoFound(rw)
-	} else {
-		models.SendData(rw, user)
-	}
+func GetUser(rw http.ResponseWriter, r *http.Request) {
+	user := models.User{}
+	sendData(rw, user, http.StatusOK)
 }
 
+func getUserById(r *http.Request) (models.User) {
+	// Obtener ID
+	vars := mux.Vars(r)
+	userId, _ := strconv.Atoi(vars["id"])
+
+	user := models.User{}
+	db.Database.First(&user, userId)
+
+	return user
+} 
+
+/* 
 func CreateUser(rw http.ResponseWriter, r *http.Request) {
 	user := models.User{}
 	decoder := json.NewDecoder(r.Body)
@@ -61,15 +73,4 @@ func DeletUser(rw http.ResponseWriter, r *http.Request) {
 		models.SendData(rw, user)
 	}
 }
-
-func getUserByRequest(r *http.Request) (models.User, error) {
-	// Obtener ID
-	vars := mux.Vars(r)
-	userId, _ := strconv.Atoi(vars["id"])
-
-	if user, err := models.GetUser(userId); err != nil {
-		return *user, err
-	} else {
-		return *user, nil
-	}
-} */
+*/
