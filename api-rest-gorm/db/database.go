@@ -1,14 +1,13 @@
 package db
 
 import (
-	"database/sql"
 	"fmt"
 
 	"gorm.io/driver/mysql"
-	_ "github.com/go-sql-driver/mysql"
 	"gorm.io/gorm"
 )
 
+// Realiza la conexión a DB
 var dsn = "root:rootmac24@tcp(localhost:3306)/goweb_db?charset=utf8mb4&parseTime=True&loc=America%2FMexico_City"
 var Database = func () (db *gorm.DB) {
 	if db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{}); err != nil {
@@ -26,7 +25,7 @@ const url = "root:rootmac24@tcp(127.0.0.1:3306)/goweb_db"
 // Guarda la conexión
 var db *sql.DB
 
-// Realiza la conexión
+
 func Connect() {
 	conection, err := sql.Open("mysql", url)
 	if err != nil {
