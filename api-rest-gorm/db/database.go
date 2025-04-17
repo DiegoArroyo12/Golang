@@ -19,7 +19,7 @@ var Database = func () (db *gorm.DB) {
 	}
 } ()
 
-// username:password@tcp(localhost:3306)/database
+/* // username:password@tcp(localhost:3306)/database
 const url = "root:rootmac24@tcp(127.0.0.1:3306)/goweb_db"
 
 // Guarda la conexión
@@ -96,4 +96,4 @@ func Query(query string, args ...interface{}) (*sql.Rows, error) {
 	}
 
 	return rows,err
-}
+} */
