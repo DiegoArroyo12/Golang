@@ -73,13 +73,11 @@ func UpdateUser(rw http.ResponseWriter, r *http.Request) {
 	}
 }
 
-/* 
 func DeletUser(rw http.ResponseWriter, r *http.Request) {
-	if user, err := getUserByRequest(r); err != nil {
-		models.SendNoFound(rw)
+	if user, err := getUserById(r); err != nil {
+		sendError(rw, http.StatusNotFound)
 	} else {
-		user.Delete()
-		models.SendData(rw, user)
+		db.Database.Delete(&user)
+		sendData(rw, user, http.StatusOK)
 	}
 }
-*/
